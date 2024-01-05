@@ -10,10 +10,21 @@ def main():
     
     env = Environment(DEBUG_LEVEL = DebugLevel.MATCH)
 
-    env.add_actor(RandomActor(1))
-    env.add_actor(Cooperator(2))
-    env.add_actor(Defector(3))
-    env.add_actor(TitForTatActor(4))
+    act = RandomActor()
+    act.name = "rndm"
+    env.add_actor(act)
+
+    act = Cooperator()
+    act.name = "coop"
+    env.add_actor(act)
+    
+    act = Defector()
+    act.name = "dfct"
+    env.add_actor(act)
+    
+    act = TitForTatActor()
+    act.name = "tfta"
+    env.add_actor(act)
     env.play()
 
 
