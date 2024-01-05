@@ -81,7 +81,7 @@ class Environment:
             if (self.DEBUG_LEVEL >= DebugLevel.MATCH): print("MTCDBG\tFacing off " + first.name + " vs " + second.name)
             first.choose_action()
             second.choose_action()
-            (first_reward, second_reward) = self.play_match(first.action, second.action)
+            (first_reward, second_reward) = self.play_match(first, second)
             if (self.DEBUG_LEVEL >= DebugLevel.MATCH): print("MTCDBG\t" + str(first.action) + " vs " + str(second.action))
             first.result(first_reward, other_actor_action = second.action)
             second.result(second_reward, other_actor_action = first.action)
@@ -102,11 +102,14 @@ class Environment:
         pass
 
 
-    def play_match(self, first_action: Action, second_action: Action):
+    def play_match(self, first: Actor, second: Actor):
         self.pre_match()
 
         first_reward = 0
         second_reward = 0
+
+        first_action = first.action
+        second_action = second.action
 
         if (first_action == Action.COOPERATE):
             if (second_action == Action.COOPERATE):
