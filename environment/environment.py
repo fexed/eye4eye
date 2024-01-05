@@ -26,8 +26,9 @@ class Environment:
     DEBUG_LEVEL: DebugLevel = DebugLevel.NO_DEBUG
 
 
-    def __init__(self):
+    def __init__(self, DEBUG_LEVEL: DebugLevel = DebugLevel.NO_DEBUG):
         self.actors = []
+        self.DEBUG_LEVEL = DEBUG_LEVEL
     
 
     def add_actor(self, actor: Actor):
@@ -38,8 +39,8 @@ class Environment:
     def play(self):
         random.shuffle(self.actors)
         num_rounds = random.randint(MAX_ROUNDS, MAX_ROUNDS)
-        print("About to play " + str(num_rounds) + " rounds with " + str(len(self.actors)) + " actors\n")
         if (self.DEBUG_LEVEL >= DebugLevel.RUN):
+            print("About to play " + str(num_rounds) + " rounds with " + str(len(self.actors)) + " actors\n")
             start_time = time.time()
 
         for i in range(0, num_rounds):
@@ -50,8 +51,7 @@ class Environment:
         if (self.DEBUG_LEVEL >= DebugLevel.RUN):
             end_time = time.time()
             print("\nRUNDBG\tPlayed " + str(num_rounds) + " rounds in " + str((end_time - start_time) * 1000) + " ms")
-        
-        self.print_status()
+            self.print_status()
 
 
     def play_round(self, is_first_round: bool = False):
