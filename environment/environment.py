@@ -94,16 +94,16 @@ class Environment:
         return (match_played, points_delta)
 
 
-    def pre_match(self):
+    def pre_match(self, first: Actor, second: Actor):
         pass
 
 
-    def post_match(self):
+    def post_match(self, first: Actor, second: Actor):
         pass
 
 
     def play_match(self, first: Actor, second: Actor):
-        self.pre_match()
+        self.pre_match(first, second)
 
         first_reward = 0
         second_reward = 0
@@ -130,7 +130,7 @@ class Environment:
                 second_reward = 1
                 return (first_reward, second_reward)
         
-        self.post_match()
+        self.post_match(first, second)
 
         return (first_reward, second_reward)
 
