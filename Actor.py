@@ -1,4 +1,4 @@
-from Action import Action
+from environment.action import Action
 
 
 class Actor:

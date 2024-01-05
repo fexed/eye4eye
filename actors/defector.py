@@ -1,5 +1,5 @@
-from Actor import Actor
-from Action import Action
+from actor import Actor
+from environment.action import Action
 
 
 class Defector(Actor):

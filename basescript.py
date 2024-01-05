@@ -1,8 +1,8 @@
-from Environment import Environment
-from RandomActor import RandomActor
-from Cooperator import Cooperator
-from Defector import Defector
-from TitForTatActor import TitForTatActor
+from environment.environment import Environment
+from actors.randomActor import RandomActor
+from actors.cooperator import Cooperator
+from actors.defector import Defector
+from actors.titForTatActor import TitForTatActor
 
 
 def main():
