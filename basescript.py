@@ -17,5 +17,6 @@ def main():
     env.add_actor(TitForTatActor(4))
     env.play()
 
+
 if __name__ == "__main__":
     main()
