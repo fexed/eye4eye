@@ -1,4 +1,5 @@
 from environment.environment import Environment, DebugLevel
+from environment.visualEnvironment import VisualEnvironment
 from actors.randomActor import RandomActor
 from actors.cooperator import Cooperator
 from actors.defector import Defector
@@ -8,7 +9,7 @@ from actors.titForTatActor import TitForTatActor
 def main():
     print("eye4eye alpha v0.0.1")
     
-    env = Environment(DEBUG_LEVEL = DebugLevel.MATCH)
+    env = VisualEnvironment(DEBUG_LEVEL = DebugLevel.MATCH)
 
     act = RandomActor()
     act.name = "rndm"
