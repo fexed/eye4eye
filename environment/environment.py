@@ -1,4 +1,4 @@
-from actor import Actor
+from environment.actor import Actor
 from environment.action import Action
 from enum import Enum
 from functools import total_ordering
