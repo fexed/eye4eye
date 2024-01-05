@@ -35,9 +35,18 @@ class Environment:
         self.actors.append(actor)
         if (self.DEBUG_LEVEL >= DebugLevel.RUN): print("ENVDBG\tAdding actor " + actor.name + " to environment")
 
-    
-    def play(self):
+
+    def pre_play(self):
         random.shuffle(self.actors)
+
+
+    def post_play(self):
+        if (self.DEBUG_LEVEL >= DebugLevel.RUN):
+            self.print_status()
+    
+
+    def play(self):
+        self.pre_play()
         num_rounds = random.randint(MAX_ROUNDS, MAX_ROUNDS)
         if (self.DEBUG_LEVEL >= DebugLevel.RUN):
             print("About to play " + str(num_rounds) + " rounds with " + str(len(self.actors)) + " actors\n")
@@ -51,11 +60,23 @@ class Environment:
         if (self.DEBUG_LEVEL >= DebugLevel.RUN):
             end_time = time.time()
             print("\nRUNDBG\tPlayed " + str(num_rounds) + " rounds in " + str((end_time - start_time) * 1000) + " ms")
-            self.print_status()
+        
+        self.post_play()
+
+
+    def pre_round(self):
+        pass
+
+
+    def post_round(self):
+        pass
 
 
     def play_round(self, is_first_round: bool = False):
+        self.pre_round()
+        
         match_played, points_delta = 0, 0
+        
         for first, second in zip(self.actors, self.actors[1:]):
             if (self.DEBUG_LEVEL >= DebugLevel.MATCH): print("MTCDBG\tFacing off " + first.name + " vs " + second.name)
             first.choose_action()
@@ -67,10 +88,23 @@ class Environment:
 
             match_played += 1
             points_delta += abs(first_reward) + abs(second_reward)
+        
+        self.post_round()
+        
         return (match_played, points_delta)
 
 
+    def pre_match(self):
+        pass
+
+
+    def post_match(self):
+        pass
+
+
     def play_match(self, first_action: Action, second_action: Action):
+        self.pre_match()
+
         first_reward = 0
         second_reward = 0
 
@@ -92,7 +126,9 @@ class Environment:
                 first_reward = 1
                 second_reward = 1
                 return (first_reward, second_reward)
-              
+        
+        self.post_match()
+
         return (first_reward, second_reward)
 
 
