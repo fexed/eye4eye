@@ -77,7 +77,7 @@ class Environment:
         
         match_played, points_delta = 0, 0
         
-        for first, second in zip(self.actors, self.actors[1:]):
+        for first, second in list(zip(self.actors[::2], self.actors[1::2])):
             if (self.DEBUG_LEVEL >= DebugLevel.MATCH): print("MTCDBG\tFacing off " + first.name + " vs " + second.name)
             first.choose_action()
             second.choose_action()
