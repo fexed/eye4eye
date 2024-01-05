@@ -8,6 +8,7 @@ import random
 
 MAX_ROUNDS = 500
 
+
 @total_ordering
 class DebugLevel(Enum):
     NO_DEBUG = -1
