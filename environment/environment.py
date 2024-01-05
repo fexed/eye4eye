@@ -6,7 +6,7 @@ import time
 import random
 
 
-MAX_ROUNDS = 500
+MAX_ROUNDS = 50
 
 
 @total_ordering
@@ -20,6 +20,7 @@ class DebugLevel(Enum):
         if self.__class__ is other.__class__:
             return self.value < other.value
         return NotImplemented
+
 
 class Environment:
     actors: [Actor]
