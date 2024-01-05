@@ -1,4 +1,4 @@
-from environment.environment import Environment
+from environment.environment import Environment, DebugLevel
 from actors.randomActor import RandomActor
 from actors.cooperator import Cooperator
 from actors.defector import Defector
@@ -9,7 +9,7 @@ def main():
     print("eye4eye alpha v0.0.1")
     
     env = Environment()
-    env.DEBUG_OUTPUT = True
+    env.DEBUG_LEVEL = DebugLevel.MATCH
 
     env.add_actor(RandomActor(1))
     env.add_actor(Cooperator(2))
