@@ -23,3 +23,8 @@ class Actor:
     
     def print_status(self):
         print(self.name + " with " + str(self.points) + " points")
+
+    
+    def reset(self):
+        self.points = 0
+        self.action = Action.UNDEFINED
