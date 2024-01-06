@@ -4,6 +4,7 @@ from actors.randomActor import RandomActor
 from actors.cooperator import Cooperator
 from actors.defector import Defector
 from actors.titForTatActor import TitForTatActor
+from actors.titFor2TatsActor import TitFor2TatsActor
 
 
 def main():
