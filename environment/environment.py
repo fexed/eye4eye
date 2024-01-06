@@ -39,6 +39,8 @@ class Environment:
 
     def pre_play(self):
         random.shuffle(self.actors)
+        for actor in self.actors:
+            actor.reset()
 
 
     def post_play(self):
