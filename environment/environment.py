@@ -50,7 +50,7 @@ class Environment:
 
     def play(self):
         self.pre_play()
-        num_rounds = random.randint(MAX_ROUNDS, MAX_ROUNDS)
+        num_rounds = random.randint(MAX_ROUNDS - 5, MAX_ROUNDS + 5)
         if (self.DEBUG_LEVEL >= DebugLevel.RUN):
             print("About to play " + str(num_rounds) + " rounds with " + str(len(self.actors)) + " actors\n")
             start_time = time.time()
