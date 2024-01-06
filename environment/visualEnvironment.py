@@ -24,8 +24,8 @@ class VisualEnvironment(Environment):
         super().pre_play()
         os.system('cls' if os.name == 'nt' else 'clear')
         for ix, actor in enumerate(self.actors):
-            self.print_char(0, ix + 2, actor.name)
-            self.indexes[actor.name] = ix + 2
+            self.indexes[actor.name] = ix + 3
+            self.print_char(0, self.indexes[actor.name], actor.name)
             if (len(actor.name) > self.curr_x): self.curr_x = len(actor.name)
         self.curr_x += 2
 
@@ -33,15 +33,16 @@ class VisualEnvironment(Environment):
     def pre_round(self):
         super().pre_round()
         self.print_char(self.curr_x, 0, str(self.i + 1))
+        self.print_char(self.curr_x, 2, "-")
         self.i += 1
 
     
     def post_round(self):
         super().post_round()
-        for ix, actor in enumerate(self.actors):
+        for actor in self.actors:
             label = "C" if actor.action == Action.COOPERATE else ("D" if actor.action == Action.DEFECT else "U")
-            self.print_char(self.curr_x, ix + 2, label)
-        self.curr_x += int(math.log10(self.i)) + 2
+            self.print_char(self.curr_x, self.indexes[actor.name], label)
+        self.curr_x += int(math.log10(self.i)) + 3
         
     
     def post_play(self):
