@@ -10,7 +10,7 @@ from actors.titFor2TatsActor import TitFor2TatsActor
 def main():
     print("eye4eye alpha v0.0.1")
     
-    env = VisualEnvironment(DEBUG_LEVEL = DebugLevel.MATCH)
+    env = VisualEnvironment(DEBUG_LEVEL = DebugLevel.RUN)
 
     act = RandomActor()
     act.name = "rndm"
@@ -27,6 +27,11 @@ def main():
     act = TitForTatActor()
     act.name = "tfta"
     env.add_actor(act)
+    
+    act = TitFor2TatsActor()
+    act.name = "tf2t"
+    env.add_actor(act)
+
     env.play()
 
 
