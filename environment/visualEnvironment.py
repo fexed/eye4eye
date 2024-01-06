@@ -23,10 +23,18 @@ class VisualEnvironment(Environment):
     def pre_play(self):
         super().pre_play()
         os.system('cls' if os.name == 'nt' else 'clear')
-        for ix, actor in enumerate(self.actors):
+        ix = 0
+        curr_pair = 0
+        for actor in self.actors:
             self.indexes[actor.name] = ix + 3
+            if curr_pair == 2: 
+                self.indexes[actor.name] += 1
+                ix += 1
+                curr_pair = 0
+            curr_pair += 1
             self.print_char(0, self.indexes[actor.name], actor.name)
             if (len(actor.name) > self.curr_x): self.curr_x = len(actor.name)
+            ix += 1
         self.curr_x += 2
 
 
