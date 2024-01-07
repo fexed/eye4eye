@@ -137,7 +137,7 @@ class Environment:
     def print_status(self):
         top_players = self.get_top_players()
         for actor in top_players:
-            actor.print_status()
+            print(actor.name + " (" + str(actor.points) + "), ", end = "")
 
     
     def get_top_players(self):
