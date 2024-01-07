@@ -47,18 +47,19 @@ class VisualEnvironment(Environment):
     
     def post_round(self):
         super().post_round()
-        for actor in self.actors:
-            label = "C" if actor.action == Action.COOPERATE else ("D" if actor.action == Action.DEFECT else "U")
-            self.print_char(self.curr_x, self.indexes[actor.name], label)
         self.curr_x += int(math.log10(self.i)) + 3
         
     
     def post_play(self):
         super().post_play()
-        print("\n")
+        self.print_char(0, len(self.actors) + (math.log2(len(self.actors))), "\n\n\n\n")
         self.print_status()
 
 
     def post_match(self, first: Actor, second: Actor):
         super().post_match(first, second)
+        label = "C" if first.action == Action.COOPERATE else ("D" if first.action == Action.DEFECT else "U")
+        self.print_char(self.curr_x, self.indexes[first.name], label)
+        label = "C" if second.action == Action.COOPERATE else ("D" if second.action == Action.DEFECT else "U")
+        self.print_char(self.curr_x, self.indexes[second.name], label)
         
