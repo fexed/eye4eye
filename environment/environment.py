@@ -118,20 +118,16 @@ class Environment:
             if (second_action == Action.COOPERATE):
                 first_reward = 3
                 second_reward = 3
-                return (first_reward, second_reward)
             elif (second_action == Action.DEFECT):
                 first_reward = 0
                 second_reward = 5
-                return (first_reward, second_reward)
         elif (first_action == Action.DEFECT):
             if (second_action == Action.COOPERATE):
                 first_reward = 5
                 second_reward = 0
-                return (first_reward, second_reward)
             elif (second_action == Action.DEFECT):
                 first_reward = 1
                 second_reward = 1
-                return (first_reward, second_reward)
         
         self.post_match(first, second)
 
