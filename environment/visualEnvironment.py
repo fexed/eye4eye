@@ -4,6 +4,7 @@ from environment.actor import Actor
 import os
 import math
 
+
 class VisualEnvironment(Environment):
     i: int = 0
     curr_x: int = 0
