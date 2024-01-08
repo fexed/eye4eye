@@ -6,7 +6,7 @@ import time
 import random
 
 
-MAX_ROUNDS = 50
+MAX_ROUNDS = 500
 
 
 @total_ordering
