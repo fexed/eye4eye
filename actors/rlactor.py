@@ -41,7 +41,7 @@ class RLActor(Actor):
 
     
     def print_status(self):
-        print(self.name + " has " + str(self.points) + " points, p = " + str(self.cooperate_prob))
+        print(self.name + " has " + str(self.points/self.played) + " points per match, p = " + str(self.cooperate_prob))
 
     
     def reset(self):
