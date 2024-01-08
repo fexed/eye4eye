@@ -26,5 +26,4 @@ class Actor:
 
     
     def reset(self):
-        self.points = 0
         self.action = Action.UNDEFINED
