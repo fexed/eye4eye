@@ -4,8 +4,10 @@ import random
 
 
 class RLActor(Actor):
+    learning_rate: float = 0.1
     cooperate_prob: float
     iteration: int
+    decay_rate: int = 1
 
     def __init__(self, ix: int = 0):
         super().__init__(ix)
@@ -24,19 +26,23 @@ class RLActor(Actor):
 
     def result(self, delta_points: int, other_actor_action: Action):
         super().result(delta_points, other_actor_action)
+        self.iteration += 1
+
+        lr = (1 / (1 + self.decay_rate + self.iteration)) * self.learning_rate
+        
         if (self.action == Action.COOPERATE):
             if (delta_points < 0):
-                self.cooperate_prob -= 0.01
+                self.cooperate_prob -= lr
                 self.cooperate_prob = max(self.cooperate_prob, 0.01)
             else:
-                self.cooperate_prob += 0.01
+                self.cooperate_prob += lr
                 self.cooperate_prob = min(self.cooperate_prob, 0.99)
         elif (self.action == Action.DEFECT):
             if (delta_points < 0):
-                self.cooperate_prob += 0.01
+                self.cooperate_prob += lr
                 self.cooperate_prob = min(self.cooperate_prob, 0.99)
             else:
-                self.cooperate_prob -= 0.01
+                self.cooperate_prob -= lr
                 self.cooperate_prob = max(self.cooperate_prob, 0.01)
 
     
