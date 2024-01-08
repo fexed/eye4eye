@@ -5,12 +5,16 @@ from actors.cooperator import Cooperator
 from actors.defector import Defector
 from actors.titForTatActor import TitForTatActor
 from actors.titFor2TatsActor import TitFor2TatsActor
+from actors.rlactor import RLActor
 
 
 def main():
     print("eye4eye alpha v0.0.1")
     
-    env = VisualEnvironment(DEBUG_LEVEL = DebugLevel.RUN)
+    env = Environment(DEBUG_LEVEL = DebugLevel.NO_DEBUG)
+
+    act = TitFor2TatsActor()
+    act.name = "tf2t"
 
     act = RandomActor()
     act.name = "rndm"
@@ -27,12 +31,14 @@ def main():
     act = TitForTatActor()
     act.name = "tfta"
     env.add_actor(act)
-    
-    act = TitFor2TatsActor()
-    act.name = "tf2t"
+
+    act = RLActor()
+    act.name = "rlac"
     env.add_actor(act)
 
-    env.play()
+    for i in range(50):
+        env.play()
+    env.print_status()
 
 
 if __name__ == "__main__":
